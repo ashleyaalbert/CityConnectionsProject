@@ -26,5 +26,9 @@ def main():
 
 
     # output: just write the edges to an outputfile in same format as input files
+    #output_file = open('output.txt', 'w')
+    #for loop through list here 
+        #output_file.write(object+"\n")
+    #output_file.close()
 
 main()
