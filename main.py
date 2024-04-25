@@ -5,11 +5,14 @@ from dijk import *
 
 def main():
     # TODO: prompt user for file otherwise use default one, validate input
-    #fileName = "workingSmallTest.txt"
     # fileName = "smallTest.txt"
     #fileName = "californiaNetwork.txt"
-    # fileName = "roads.txt"
-    #fileName = "tricktest.txt"
+    
+    #prompting user for a file name
+    result = False
+    while result is False:
+        fileName = input("Enter the name of your graph file: ")
+        result = promptForFile(fileName)
     
     # Create adjacency list to represent the graph
     graph = create_graph(fileName)
@@ -50,5 +53,17 @@ def writeToFile(total_weight, tree_edges, output_file):
 
     # print((total / 21693) * len(tree_edges))
 
+def promptForFile(fileName):
+    if not os.path.exists(fileName):
+        print("File does not exist. Please try again.")
+        return False
+
+    with open(fileName, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if line.strip() != "":
+                return True
+    print("File is empty. Please try again.")
+    return False
   
 main()
