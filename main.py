@@ -2,6 +2,7 @@ from parse import *
 from prim import *
 from krus import *
 from dijk import *
+from visualize import *
 
 def main():
     # TODO: prompt user for file otherwise use default one, validate input
@@ -24,6 +25,17 @@ def main():
     # Run Kruskal's algorithm and write output to "kruskal_output.txt"
     total_weight, tree_edges = kruskal(graph, len(graph))
     writeToFile(total_weight, tree_edges, "kruskal_output.txt")
+
+    # Visualize, but only a portion, not thousands:
+    G = GraphVisualization() 
+    with open("100.txt", 'r') as file:
+        for line in file:
+            id, start, end, weight = line.split()
+            start = int(start)
+            end = int(end)
+            weight = float(weight)
+            G.addEdge(start, end)
+    G.visualize() 
 
 def writeToFile(total_weight, tree_edges, output_file):
     output_file = open(output_file, 'w')
