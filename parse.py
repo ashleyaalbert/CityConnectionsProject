@@ -14,6 +14,10 @@ def create_graph(fileName):
             # so maybe we exclude lines that are blank / start with #
     with open(fileName, 'r') as file:
         for line in file:
+            if line.startswith("#"): #checking for comments to ignore
+                continue
+            if len(line) == 0: #checking for blank lines to ignore
+                continue
             # Store parts of each edge
             id, start, end, weight = line.split()
             start = int(start)
