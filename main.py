@@ -5,10 +5,11 @@ from dijk import *
 
 def main():
     # TODO: prompt user for file otherwise use default one, validate input
-    # fileName = "workingSmallTest.txt"
+    #fileName = "workingSmallTest.txt"
     # fileName = "smallTest.txt"
-    fileName = "californiaNetwork.txt"
+    #fileName = "californiaNetwork.txt"
     # fileName = "roads.txt"
+    #fileName = "tricktest.txt"
     
     # Create adjacency list to represent the graph
     graph = create_graph(fileName)
