@@ -1,6 +1,7 @@
 from parse import *
 from prim import *
 from krus import *
+from dijk import *
 
 def main():
     # TODO: prompt user for file otherwise use default one, validate input
