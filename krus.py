@@ -23,27 +23,28 @@ class UnionFind:
             return True
         return False
 
-#len(graph) is the num_nodes
 def kruskal(graph, num_nodes):
     # Collect all unique edges
     edges = set()
+    total_weight = 0
     for start, connections in graph.items():
-        for end, weight in connections:
+        for id, _, end, weight in connections:
             if start < end:
-                edges.add((start, end, weight))
+                edges.add((id, start, end, weight))
     
     # Convert to list and sort by weight
     edges = list(edges)
-    edges.sort(key=lambda x: x[2])
+    edges.sort(key=lambda x: x[3])
 
     uf = UnionFind(num_nodes)
     mst = []  # To store the result
 
-    for start, end, weight in edges:
+    for id, start, end, weight in edges:
         if uf.union(start, end):
-            mst.append((start, end, weight))
+            total_weight += weight
+            mst.append((id, start, end, weight))
             if len(mst) == num_nodes - 1:
                 break
 
-    return mst
+    return total_weight, mst
 

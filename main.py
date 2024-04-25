@@ -1,34 +1,52 @@
 from parse import *
+from prim import *
+from krus import *
 
-
-# TODO: PROMPT: You should read in an input file in this format, build a representation of the graph, compute your shortest connecting set
-# of edges, and write it out as a file in the same format.
-
-# TODO: run the program in terminal by typing: python main.py
 def main():
-    # TODO: maybe prompt user for file otherwise use default one
-    fileName = "smallTest.txt"
-    # fileName = "californiaNetwork.txt"
+    # TODO: prompt user for file otherwise use default one, validate input
+    # fileName = "workingSmallTest.txt"
+    # fileName = "smallTest.txt"
+    fileName = "californiaNetwork.txt"
+    # fileName = "roads.txt"
+    
+    # Create adjacency list to represent the graph
     graph = create_graph(fileName)
 
+    # Run Dijkstra's algorithm and write output to dijkstra_output.txt"
+    # total_weight, tree_edges = dijk(graph, len(graph))
+    # writeToFile(total_weight, tree_edges, "dijkstra_output.txt")
 
-    # TODO: example of looping through graph / accessing things since dictionaries/tuples can be wck
-        # remember that each vertex is a key with a value of the form [(ID, end vertex, weight), (id2, v2, w2), ...]
-    for key in graph:
-        val = graph[key]
-        if val != []:
-            # print(val[0][2]) # prints weight of an edge
-            pass
+    # Run Kruskal's algorithm and write output to "kruskal_output.txt"
+    total_weight, tree_edges = kruskal(graph, len(graph))
+    writeToFile(total_weight, tree_edges, "kruskal_output.txt")
 
-    # call alg 1
+def writeToFile(total_weight, tree_edges, output_file):
+    output_file = open(output_file, 'w')
+    new_str = ""
+    counter = 0
+    avg = 0
+    for edge in tree_edges:
+        new_str = str(edge[0]) + " " + str(edge[1]) + " " + str(edge[2]) + " " + str(edge[3])
+        output_file.write(new_str)
+        counter += 1
+        if (counter < len(tree_edges)):
+            output_file.write("\n")
 
-    # call alg2
+    print("Total weight is " + str(total_weight))
+    output_file.close() 
 
+    # TODO: delete dis lol it's to find the average weight per edge for shits and giggles
+    # with open("californiaNetwork.txt", 'r') as file:
+    #     total = 0
+    #     for line in file:
+    #         id, start, end, weight = line.split()
+    #         start = int(start)
+    #         end = int(end)
+    #         # a = float(weight)
+    #         print(weight)
+    #         total += float(weight)
 
-    # output: just write the edges to an outputfile in same format as input files
-    #output_file = open('output.txt', 'w')
-    #for loop through list here 
-        #output_file.write(object+"\n")
-    #output_file.close()
+    # print((total / 21693) * len(tree_edges))
 
+  
 main()
