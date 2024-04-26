@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
   
 # Defining a Class 
 class GraphVisualization: 
-   
     def __init__(self): 
           
         # visual is a list which stores all  
@@ -28,6 +27,5 @@ class GraphVisualization:
     def visualize(self): 
         G = nx.Graph() 
         G.add_edges_from(self.visual) 
-        nx.draw_networkx(G) 
+        nx.draw_networkx(G,with_labels=False, node_size=3)
         plt.show() 
-  
