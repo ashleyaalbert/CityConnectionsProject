@@ -34,7 +34,7 @@ def main():
     #         weight = float(weight)
     #         G.addEdge(start, end)
     # G.visualize() 
-print("HELLO")
+
 
 # Write algorithm output to a file
 def writeToFile(total_weight, tree_edges, output_file):
