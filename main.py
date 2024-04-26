@@ -2,14 +2,10 @@ from parse import *
 from prim import *
 from krus import *
 from dijk import *
-from visualize import *
+# from visualize import *
 
 def main():
-    # TODO: prompt user for file otherwise use default one, validate input
-    # fileName = "smallTest.txt"
-    #fileName = "californiaNetwork.txt"
-    
-    #prompting user for a file name
+    # Prompt user for a file name
     result = False
     while result is False:
         fileName = input("Enter the name of your graph file: ")
@@ -19,52 +15,46 @@ def main():
     graph = create_graph(fileName)
 
     # Run Dijkstra's algorithm and write output to dijkstra_output.txt"
-    # total_weight, tree_edges = dijk(graph, len(graph))
-    # writeToFile(total_weight, tree_edges, "dijkstra_output.txt")
+    print("Running Dijkstra's algorithm...")
+    total_weight, tree_edges = dijkstra(graph, len(graph))
+    writeToFile(total_weight, tree_edges, "dijkstra.txt")
 
     # Run Kruskal's algorithm and write output to "kruskal_output.txt"
+    print("Running Kruskal's algorithm...")
     total_weight, tree_edges = kruskal(graph, len(graph))
-    writeToFile(total_weight, tree_edges, "kruskal_output.txt")
+    writeToFile(total_weight, tree_edges, "kruskal.txt")
 
     # Visualize, but only a portion, not thousands:
-    G = GraphVisualization() 
-    with open("100.txt", 'r') as file:
-        for line in file:
-            id, start, end, weight = line.split()
-            start = int(start)
-            end = int(end)
-            weight = float(weight)
-            G.addEdge(start, end)
-    G.visualize() 
-
-def writeToFile(total_weight, tree_edges, output_file):
-    output_file = open(output_file, 'w')
-    new_str = ""
-    counter = 0
-    avg = 0
-    for edge in tree_edges:
-        new_str = str(edge[0]) + " " + str(edge[1]) + " " + str(edge[2]) + " " + str(edge[3])
-        output_file.write(new_str)
-        counter += 1
-        if (counter < len(tree_edges)):
-            output_file.write("\n")
-
-    print("Total weight is " + str(total_weight))
-    output_file.close() 
-
-    # TODO: delete dis lol it's to find the average weight per edge for shits and giggles
-    # with open("californiaNetwork.txt", 'r') as file:
-    #     total = 0
+    # G = GraphVisualization() 
+    # with open("workingSmallTest.txt", 'r') as file:
     #     for line in file:
     #         id, start, end, weight = line.split()
     #         start = int(start)
     #         end = int(end)
-    #         # a = float(weight)
-    #         print(weight)
-    #         total += float(weight)
+    #         weight = float(weight)
+    #         G.addEdge(start, end)
+    # G.visualize() 
+print("HELLO")
 
-    # print((total / 21693) * len(tree_edges))
+# Write algorithm output to a file
+def writeToFile(total_weight, tree_edges, output_file):
+    output = open(output_file, 'w')
+    new_str = ""
+    counter = 0
+    for edge in tree_edges:
+        new_str = str(edge[0]) + " " + str(edge[1]) + " " + str(edge[2]) + " " + str(edge[3])
+        output.write(new_str)
+        counter += 1
+        if (counter < len(tree_edges)):
+            output.write("\n")
 
+    output.close() 
+    print("The edges are in the file " + output_file)
+    print("Total number of edges is " + str(counter))
+    print("Total weight is " + str(total_weight) + "\n")
+
+
+# Validate the file format
 def promptForFile(fileName):
     if not os.path.exists(fileName):
         print("File does not exist. Please try again.")
