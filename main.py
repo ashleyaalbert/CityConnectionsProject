@@ -2,7 +2,7 @@ from parse import *
 from prim import *
 from krus import *
 from dijk import *
-# from visualize import *
+from visualize import *
 
 def main():
     # Prompt user for a file name
@@ -24,16 +24,18 @@ def main():
     total_weight, tree_edges = kruskal(graph, len(graph))
     writeToFile(total_weight, tree_edges, "kruskal.txt")
 
-    # Visualize, but only a portion, not thousands:
-    # G = GraphVisualization() 
-    # with open("workingSmallTest.txt", 'r') as file:
-    #     for line in file:
-    #         id, start, end, weight = line.split()
-    #         start = int(start)
-    #         end = int(end)
-    #         weight = float(weight)
-    #         G.addEdge(start, end)
-    # G.visualize() 
+    # Visualize 7000 vertices (must install networkx and scipy (README)):
+    print("Here is a visualization of an MST on a graph of 7000 vertices (check the README for instructions if it doesn't work)")
+
+    G = GraphVisualization() 
+    with open("visualize.txt", 'r') as file:
+        for line in file:
+            id, start, end, weight = line.split()
+            start = int(start)
+            end = int(end)
+            weight = float(weight)
+            G.addEdge(start, end)
+    G.visualize() 
 
 
 # Write algorithm output to a file
