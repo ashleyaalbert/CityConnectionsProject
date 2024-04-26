@@ -1,119 +1,42 @@
-from parse import *
+def dijkstra(graph, length):
 
-# def edge_list_organizer(graph):
-#     list = {}
-#     for (id, dest, weight) in graph:
-#         if id not in list:
-#             list[graph[start]] = {}
-#         if dest not in list:
-#             list[dest] = {}
-
-#         list[]
-
-# def dijkstra(graph, starting_node):
-#     # List of IDs
-#     id_list = []
-
-#     # Total weight
-#     weight = float('inf')
-
-#     # Priority queue to track nodes and current smallest weight
-#     p_queue = [(0, starting_node)]
-
-#     while p_queue:
-#         # Pop the node of the smallest distance
-#         curr_distance, curr_node = heapq.heappop(p_queue)
-
-#         # If there is a shorter distance to the current node, skip
-#         if curr_distance > w
+    # Initializing source, distances as a large number, visited list to false and the list 
+    # and total weight to hold returning information
+    src = 0
+    distance = [1000000 for _ in range(length)]
+    distance[src] = 0
+    visited = [False for _ in range(length)]
+    the_list = []
+    total_weight = 0
 
 
+    # Loop through the nodes and pick the next node based on distance to visit
+    for _ in range(length):
+        # No start node yet
+        start = -1
+        # Checking to see if the nodes have been visited or not
+        for i in range(length):
+            # Node[i] hasn't been visited or processed, or distance is less
+            if not visited[i] and (start == -1 or (distance[i] < distance[start])):
+                start = i
+        
+        # If we looped through and we can't reach a node we break
+        if distance[start] == 1000000:
+            break
+        visited[start] = True
 
+        # Labelling the different indexes of the list of adjacent edges
+        for list_of_adjacent_edges in graph[start]: 
+            id = list_of_adjacent_edges[0]
+            begin = list_of_adjacent_edges[1]
+            end = list_of_adjacent_edges[2]
+            weight = list_of_adjacent_edges[3]
 
+            # Comparing distances from the start node to distances we already have of it
+            if distance[start] + 1 < distance[end]:
+                distance[end] = distance[start] + 1
+                total_weight += weight
+                the_list.append((id, begin, end, weight))
 
-
-# Python program for Dijkstra's single
-# source shortest path algorithm. The program is
-# for adjacency matrix representation of the graph
-class Graph():
- 
-    def __init__(self, vertices):
-        self.V = vertices
-        self.graph = [[0 for column in range(vertices)]
-                      for row in range(vertices)]
- 
-    def printSolution(self, dist):
-        print("Vertex \t Distance from Source")
-        for node in range(self.V):
-            print(node, "\t\t", dist[node])
- 
-    # A utility function to find the vertex with
-    # minimum distance value, from the set of vertices
-    # not yet included in shortest path tree
-    def minDistance(self, dist, sptSet):
- 
-        # Initialize minimum distance for next node
-        min = 1e10
- 
-        # Search not nearest vertex not in the
-        # shortest path tree
-        for v in range(self.V):
-            if dist[v] < min and sptSet[v] == False:
-                min = dist[v]
-                min_index = v
- 
-        return min_index
- 
-    # Function that implements Dijkstra's single source
-    # shortest path algorithm for a graph represented
-    # using adjacency matrix representation
-    def dijkstra(self, src):
- 
-        dist = [1e10] * self.V
-        dist[src] = 0
-        sptSet = [False] * self.V
- 
-        for cout in range(self.V):
- 
-            # Pick the minimum distance vertex from
-            # the set of vertices not yet processed.
-            # u is always equal to src in first iteration
-            u = self.minDistance(dist, sptSet)
- 
-            # Put the minimum distance vertex in the
-            # shortest path tree
-            sptSet[u] = True
- 
-            # Update dist value of the adjacent vertices
-            # of the picked vertex only if the current
-            # distance is greater than new distance and
-            # the vertex in not in the shortest path tree
-            for v in range(self.V):
-                if (self.graph[u][v] > 0 and
-                   sptSet[v] == False and
-                   dist[v] > dist[u] + self.graph[u][v]):
-                    dist[v] = dist[u] + self.graph[u][v]
- 
-        self.printSolution(dist)
- 
-# Driver program
-g = Graph(9)
-g.graph = [[0, 4, 0, 0, 0, 0, 0, 8, 0],
-           [4, 0, 8, 0, 0, 0, 0, 11, 0],
-           [0, 8, 0, 7, 0, 4, 0, 0, 2],
-           [0, 0, 7, 0, 9, 14, 0, 0, 0],
-           [0, 0, 0, 9, 0, 10, 0, 0, 0],
-           [0, 0, 4, 14, 10, 0, 2, 0, 0],
-           [0, 0, 0, 0, 0, 2, 0, 1, 6],
-           [8, 11, 0, 0, 0, 0, 1, 0, 7],
-           [0, 0, 2, 0, 0, 0, 6, 7, 0]
-           ]
- 
-g.dijkstra(0)
- 
-# This code is contributed by Divyanshu Mehta
-
-#Node 0: [('0', '0', '1', 0.002025), ('1', '0', '6', 0.005952)]
-# This means node 0 touches nodes 1 and 6, with 0.002025 and 0.005952 weight respectively and the numbers out front are the ids.
-
-# return a list of the ids and the total weight
+    # Return the total weight and the ids, starting nodes, ending nodes, and weights
+    return total_weight, the_list
