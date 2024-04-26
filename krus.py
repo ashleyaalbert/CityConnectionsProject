@@ -7,7 +7,7 @@ class UnionFind:
         # This function recursively finds the root of the element 'p'
         # while making the elements along the path point directly to the root.
         # This is done to reduce the height of the tree.
-        if self.parent[p] != p: # If p is not its own parent
+        if self.parent[p] != p: # If p is not its own parent keep recursing until it is
             self.parent[p] = self.find(self.parent[p])  # Path compression
         return self.parent[p]
 
@@ -53,7 +53,7 @@ def kruskal(graph, num_nodes):
         if uf.union(start, end): # If the edge was added to the MST
             total_weight += weight # Add the weight of the edge to the total weight of the MST
             mst.append((id, start, end, weight)) # Add this edge to the MST
-            if len(mst) == num_nodes - 1:
+            if len(mst) == num_nodes - 1: # If the MST has same number of edges as nodes - 1 we are done
                 break
 
     return total_weight, mst
