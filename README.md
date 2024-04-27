@@ -13,7 +13,7 @@ a visualization of a minimum spanning tree on a graph of 7,000 vertices to show 
 ## Installation
 In order to run this code, ensure that you have a recent version of Python3 downloaded onto your machine. 
 
-##Downloading the repository
+## Downloading the repository
   To download this repo, simply clone the project:
     cd repo_location
     git clone https://github.com/cwc023/City_Connections_Project
@@ -22,19 +22,19 @@ In order to run this code, ensure that you have a recent version of Python3 down
 ## Run the code  
 Once the repo is downloaded, ensure that you are in the directory with the project files. From there, ensure that you have a recent version of Python3   
 downloaded. There are 2 different versions of the program you can run:
-1) Both algorithms + visualization
-  a) In order to run the visualization, you must first install the following Python modules:
-    i) pip install networkx
-    ii) pip install scipy
-    iii) pip install matplotlib
-  b) Type python 3 main.py into the terminal
-  c) You will then be prompted to enter the name of the input file to run the algorithms on
-  d) The total edge weight and total edges used will be printed to the screen, with all of the edges used sent to the desired output file
-  e) A visualization on the 7,000 vertex file is printed to the screen (note: it may take a minute)
+1) Both algorithms + visualization  
+  a) In order to run the visualization, you must first install the following Python modules:  
+    i) pip install networkx  
+    ii) pip install scipy  
+    iii) pip install matplotlib  
+  b) Type python 3 main.py into the terminal  
+  c) You will then be prompted to enter the name of the input file to run the algorithms on  
+  d) The total edge weight and total edges used will be printed to the screen, with all of the edges used sent to the desired output file  
+  e) A visualization on the 7,000 vertex file is printed to the screen (note: it may take a minute)  
 
-2) Algorithm Competition: Kruskal’s algorithm
-  a) Type python3 mainForDemo.py input.txt output.txt into the terminal where input.txt is the name of the input file you’d like to run and output.txt is where you want the output to go.
-  b) The list of all used edges is sent to the desired output file
+2) Algorithm Competition: Kruskal’s algorithm  
+  a) Type python3 mainForDemo.py input.txt output.txt into the terminal where input.txt is the name of the input file you’d like to run and output.txt is where you want the output to go.  
+  b) The list of all used edges is sent to the desired output file  
 
 ## Authors and acknowledgment
 Authors of this project include Ashley Albert, Connor Coles, Eric Reinhart, Harmony Yeung.
