@@ -24,11 +24,22 @@ def main():
     total_weight, tree_edges = kruskal(graph, len(graph))
     writeToFile(total_weight, tree_edges, "kruskal.txt")
 
-    # Visualize 7000 vertices (must install networkx and scipy (README)):
-    print("Here is a visualization of an MST on a graph of 7000 vertices (check the README for instructions if it doesn't work)")
+    # Visualize minimum spanning tree (must install networkx, scipy, matplotlib (README)):
+    choice = ""
+    while not (choice in [1,2]):
+        print("Which minimum spanning tree would you like to print? (type a number corresponding to your choice)")
+        choice = input("1) Default dataset with 7,000 edges \n2) Output from Kruskal's algorithm\n")
+        if choice.isdigit():
+            choice = int(choice)
+    
+    if choice == 1:
+        file_name = "visualize.txt"
+    else:
+        file_name = "kruskal.txt"
 
+    print("Here is a visualization of the MST (it may take a while to run, but check the README for instructions if it crashes)")
     G = GraphVisualization() 
-    with open("visualize.txt", 'r') as file:
+    with open(file_name, 'r') as file:
         for line in file:
             id, start, end, weight = line.split()
             start = int(start)
