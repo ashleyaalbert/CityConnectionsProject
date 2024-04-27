@@ -14,9 +14,9 @@ a visualization of a minimum spanning tree on a graph of 7,000 vertices to show 
 In order to run this code, ensure that you have a recent version of Python3 downloaded onto your machine. 
 
 ## Downloading the repository
-  To download this repo, simply clone the project:
-    cd repo_location
-    git clone https://github.com/cwc023/City_Connections_Project
+  To download this repo, simply clone the project:  
+    cd repo_location  
+    git clone https://github.com/cwc023/City_Connections_Project  
 
 
 ## Run the code  
