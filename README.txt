@@ -14,7 +14,8 @@ Downloading the repository
     git clone https://github.com/cwc023/City_Connections_Project
 
 Run the code
-  Once the repo is downloaded, ensure that you are in the directory with the project files. From there, ensure that you have a recent version of Python3 downloaded. There are 2 different versions of the program you can run:
+  Once the repo is downloaded, ensure that you are in the directory with the project files. From there, ensure that you have a recent version of Python3   
+downloaded. There are 2 different versions of the program you can run:
 1) Both algorithms + visualization
   a) In order to run the visualization, you must first install the following Python modules:
     i) pip install networkx
